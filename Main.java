@@ -15,7 +15,7 @@ public class Main {
             myStamt = myConn.createStatement();
 
             int rowsAffected = myStamt.executeUpdate("DELETE FROM employees "+ "WHERE first_name='Johana'");
-            System.out.println("Empleados actuales:");
+           
             myRes = myStamt.executeQuery("SELECT * FROM employees");
 
             System.out.println("Empleados despues de eliminar:");
