@@ -14,12 +14,13 @@ public class Main {
 
             myStamt = myConn.createStatement();
 
-            int rowsAffected = myStamt.executeUpdate("UPDATE employees " + "set email='johanador2@example.com' " + "WHERE first_name='Johana'");
+            int rowsAffected = myStamt.executeUpdate("DELETE FROM employees "+ "WHERE first_name='Johana'");
+            System.out.println("Empleados actuales:");
+            myRes = myStamt.executeQuery("SELECT * FROM employees");
 
-            myRes = myStamt.executeQuery("SELECT * FROM employees order by pa_surname");
-
+            System.out.println("Empleados despues de eliminar:");
             while(myRes.next()){
-                System.out.println(myRes.getString("first_name") + "," + myRes.getString("email"));
+                System.out.println(myRes.getString("first_name"));
             }
 
         } catch (Exception e) {
