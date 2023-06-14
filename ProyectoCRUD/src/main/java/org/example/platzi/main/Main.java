@@ -1,5 +1,8 @@
 package org.example.platzi.main;
 
+import org.example.platzi.model.Employee;
+import org.example.platzi.repository.EmployeeRepository;
+import org.example.platzi.repository.Repository;
 import org.example.platzi.util.DatabaseConnection;
 
 import java.sql.*;
@@ -7,17 +10,12 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        try (Connection myConn = DatabaseConnection.getInstance();
-             Statement myStamt = myConn.createStatement();
-             ResultSet myRes = myStamt.executeQuery("SELECT * FROM employees");){
+        try (Connection myConn = DatabaseConnection.getInstance()){
+            Repository<Employee> repository = new EmployeeRepository();
 
-            while (myRes.next()) {
-                System.out.println(myRes.getString("first_name"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Algo salio mal ):");
+            repository.findAll().forEach(System.out::println);
         }
+
     }
 }
 
