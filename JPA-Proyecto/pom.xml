@@ -29,7 +29,8 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.2.0.CR3</version>
+            <version>5.5.7.Final</version>
         </dependency>
     </dependencies>
+
 </project>
